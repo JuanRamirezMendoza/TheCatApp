@@ -3,6 +3,8 @@ package com.example.thecatapp.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thecatapp.BASE_IMAGE_URL
+import com.example.thecatapp.JPG
 import com.example.thecatapp.databinding.CatAdapterBinding
 import com.example.thecatapp.model.Cat
 import com.squareup.picasso.Picasso
@@ -25,10 +27,11 @@ class CatAdapter(
 
     override fun getItemCount(): Int = list.size
 
-    inner class ViewHolder(private val binding: CatAdapterBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: CatAdapterBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(cat: Cat) {
             binding.catName.text = cat.name
-            Picasso.get().load(cat.image)
+            Picasso.get().load(BASE_IMAGE_URL + cat.image + JPG)
                 .into(binding.catImage)
             binding.catOrigin.text = cat.origin
             binding.catIntelligence.text = cat.intelligence
